@@ -2,7 +2,7 @@ class WebStat < ApplicationRecord
   # Add validations to check data integrity
   validates :url, presence: true
   validates :created_at, presence: true
-  validates :hash, presence: true, length: { is: 32 }
+  validates :record_hash, presence: true, length: { is: 32 }
   # With views
 
   scope :current_day_data, -> { where("timestamp >= ?", Time.current.beginning_of_day) }
@@ -66,9 +66,7 @@ class WebStat < ApplicationRecord
 
   end
 
-
-
-  # Without views
+  # Without views - Old code retained and commented
 
   # scope :last_5_days, -> { where("timestamp >= ?", 4.days.ago.beginning_of_day) }
   #

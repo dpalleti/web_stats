@@ -1,8 +1,9 @@
 
 # Web Analysis Prototype
 
-This is a Ruby on Rails application designed for in-house web analysis, providing REST API endpoints to analyze web stats efficiently.
+This is a Ruby on Rails application designed for in-house web analysis, providing REST API endpoints to analyze web stats.
 
+This project emphasized the importance of designing solutions that balance data accuracy, speed, and maintainability, showcasing my skills in backend development, database optimization, and performance testing
 ## Requirements
 
 - **Ruby version**: 3.1.6
@@ -60,7 +61,45 @@ This is a Ruby on Rails application designed for in-house web analysis, providin
 
 ---
 
-### 3. Running the Application
+
+### 3. Redis setup
+
+1. **Refresh cache and set variables**:
+   ```bash
+   Rails.cache.clear
+   
+   request_count_key = "url_views_cache_key_request_count"
+   Rails.cache.write(request_count_key, 0, raw: true)
+   
+   request_count_key = "top_referrers_cache_key_request_count"
+   Rails.cache.write(request_count_key, 0, raw: true)
+
+
+   ```
+  Currently these initial values are set through the console -> but this logic can be shifted to the code
+
+4. **Initialize materialized views**:
+
+   ```bash
+   
+   Run the following in the rails console:
+   
+   Scenic.database.refresh_materialized_view(:urls_views_last_4_days, concurrently: false)
+   Scenic.database.refresh_materialized_view(:top_referrers_by_days, concurrently: false)
+
+
+- **Limitation**:
+
+    - As this is just a prototype - there is no support for these views to refresh at the start of a day
+   Future scope 
+    - we can create a simple cron job to refresh these views and it can also be extended to cache (refresh everytime a view is refreshed)
+    - Scheduled via a cron job to refresh daily at midnight. 
+    - Logs output to `log/cron_log.log`.
+
+   ```
+
+---
+### 4. Running the Application
 
 1. **Start the server**:
    ```bash
@@ -86,123 +125,64 @@ This is a Ruby on Rails application designed for in-house web analysis, providin
 
 ---
 
-[//]: # ()
-[//]: # (## Performance Testing)
 
-[//]: # ()
-[//]: # (### Load Testing with k6)
+## Performance Testing
 
-[//]: # ()
-[//]: # (1. **Install k6**:)
+### Load Testing with k6
 
-[//]: # (   ```bash)
 
-[//]: # (   brew install k6)
+1. **Install k6**:
 
-[//]: # (   ```)
+   ```bash
 
-[//]: # ()
-[//]: # (2. **Run tests**:)
+   brew install k6
 
-[//]: # (   ```bash)
+   ```
 
-[//]: # (   k6 run <path-to-test-script.js>)
 
-[//]: # (   ```)
+2. **Run tests**:
 
-[//]: # ()
-[//]: # (   Example scenarios:)
+   ```bash
 
-[//]: # (   - **Steady load**: Sustained number of virtual users &#40;VUs&#41;.)
+   Currently performance files are at - test/performance/
 
-[//]: # (   - **Spike test**: Sudden increase in traffic.)
+   sample - k6 run url_referrers_pings_test.js --out json=top_referrers_results.json    
+  
 
-[//]: # ()
-[//]: # (---)
+   ```
 
-[//]: # ()
-[//]: # (## Services)
 
-[//]: # ()
-[//]: # (### Materialized Views)
+   Example scenarios:
 
-[//]: # ()
-[//]: # (- **Scenic Gem**: Used to manage materialized views.)
+   - **Steady load**: Sustained number of virtual users (VUs).
 
-[//]: # (- **Refresh Materialized View**:)
+   - **Spike test**: Sudden increase in traffic.
 
-[//]: # (  ```bash)
 
-[//]: # (  rails scenic:refresh MATERIALIZED_VIEW=web_stats_view)
+---
 
-[//]: # (  ```)
 
-[//]: # (- **Automated Refresh**:)
+## Services
 
-[//]: # (  - Scheduled via a cron job to refresh daily at midnight.)
 
-[//]: # (  - Logs output to `log/cron_log.log`.)
 
-[//]: # ()
-[//]: # (---)
+---
 
-[//]: # ()
-[//]: # (### Caching)
 
-[//]: # ()
-[//]: # (- **Redis** is used for caching.)
+### Caching
 
-[//]: # (- **Conditional Caching in Development**:)
 
-[//]: # (  - Create `tmp/caching-dev.txt` to enable caching.)
+- **Redis** is used for caching.
 
-[//]: # (  - Restart the server for changes to take effect.)
+- **Conditional Caching in Development**:
 
-[//]: # (- **Cache Refresh Mechanism**:)
+  - Create `tmp/caching-dev.txt` to enable caching.
 
-[//]: # (  - Cache updates after every 100 API requests.)
+  - Restart the server for changes to take effect.
 
-[//]: # ()
-[//]: # (---)
+- **Cache Refresh Mechanism**:
 
-[//]: # ()
-[//]: # (## Deployment Instructions)
+  - Cache updates after every 100 API requests.
 
-[//]: # ()
-[//]: # (1. Set environment variables for production.)
 
-[//]: # (2. Precompile assets:)
-
-[//]: # (   ```bash)
-
-[//]: # (   rails assets:precompile)
-
-[//]: # (   ```)
-
-[//]: # (3. Run database migrations:)
-
-[//]: # (   ```bash)
-
-[//]: # (   rails db:migrate RAILS_ENV=production)
-
-[//]: # (   ```)
-
-[//]: # (4. Start the server using a production server like Puma.)
-
-[//]: # ()
-[//]: # (---)
-
-[//]: # ()
-[//]: # (## Testing)
-
-[//]: # ()
-[//]: # (### Run the test suite:)
-
-[//]: # (```bash)
-
-[//]: # (bundle exec rspec)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (---)
+---
