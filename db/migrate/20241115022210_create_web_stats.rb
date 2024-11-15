@@ -4,7 +4,7 @@ class CreateWebStats < ActiveRecord::Migration[7.2]
       t.text :url, null: false
       t.text :referrer
       t.datetime :timestamp, null: false
-      t.string :record_hash, limit: 31, null: false
+      t.string :record_hash, limit: 32, null: false
 
       t.timestamps
     end

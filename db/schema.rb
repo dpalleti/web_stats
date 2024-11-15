@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_022210) do
     t.text "url", null: false
     t.text "referrer"
     t.datetime "timestamp", null: false
-    t.string "record_hash", limit: 31, null: false
+    t.string "record_hash", limit: 32, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["referrer"], name: "index_web_stats_on_referrer", where: "(referrer IS NOT NULL)"
