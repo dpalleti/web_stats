@@ -28,7 +28,7 @@ export let options = {
 const responseTime = new Trend('response_time');
 
 export default function () {
-    const res = http.get('http://0.0.0.0:3000/top-referrers');
+    const res = http.get('http://0.0.0.0:3000/top-referrers?use_cache=false');
 
     check(res, {
         'status is 200': (r) => r.status === 200,
