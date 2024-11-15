@@ -22,6 +22,25 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore precompiled assets.
+/public/assets
+/public/packs
+/public/packs-test
+
+# Ignore Yarn and Node artifacts.
+/node_modules
+/yarn-error.log
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Ignore PostgreSQL dumps and logs.
+/db/*.sql
+/db/dumps/
+/db/postgresql.log
+# Ignore temporary files from database migrations.
+/db/schema.rb.bak
+/db/structure.sql.bak
+
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
 !/storage/.keep
@@ -29,7 +48,17 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
-/public/assets
+# Ignore coverage reports (e.g., from SimpleCov).
+/coverage/
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+# Ignore byebug history (debugging artifacts).
+.byebug_history
+
+# Ignore IDE and system files.
+.DS_Store
+.idea/
+.vscode/
+
+# Ignore temporary files generated during tests.
+/test/tmp/
+/test/tempfiles/
