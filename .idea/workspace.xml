@@ -178,17 +178,31 @@
       <workItem from="1731399128613" duration="17882000" />
       <workItem from="1731481442490" duration="4532000" />
       <workItem from="1731495367709" duration="37236000" />
-      <workItem from="1731619780137" duration="8172000" />
+      <workItem from="1731619780137" duration="12460000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/models/web_stat.rb</url>
+          <line>22</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_stats@test__web_stats.rcov" NAME="test: web_stats Coverage Results" MODIFIED="1731554976191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="web_stats" />
     <SUITE FILE_PATH="coverage/web_stats@spec__web_stats.rcov" NAME="spec: web_stats Coverage Results" MODIFIED="1731554996347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="web_stats" />
-    <SUITE FILE_PATH="coverage/web_stats@web_stats.rcov" NAME="web_stats Coverage Results" MODIFIED="1731555005689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="web_stats" />
+    <SUITE FILE_PATH="coverage/web_stats@web_stats.rcov" NAME="web_stats Coverage Results" MODIFIED="1731646654652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="web_stats" />
     <SUITE FILE_PATH="coverage/web_stats@db_generate_data__web_stats.rcov" NAME="db:generate_data: web_stats Coverage Results" MODIFIED="1731554966279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="web_stats" />
   </component>
 </project>
