@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   include ReportsHelper
   def top_urls
-    formatted_data = format_page_views(WebStat.page_views_per_url)
+    formatted_data = format_page_views(WebStat.top_urls_last_5_days)
     render json: formatted_data, content_type: 'application/json'
   end
 

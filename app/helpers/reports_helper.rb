@@ -25,5 +25,4 @@ module ReportsHelper
     { status: 200, data: formatted_data }
   end
 
-
 end
