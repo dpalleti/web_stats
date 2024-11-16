@@ -5,7 +5,7 @@ WITH filtered_data AS (
     DATE(timestamp) AS day
 FROM
     web_stats
-WHERE timestamp >= NOW() - INTERVAL '5 days' AND timestamp < NOW() - INTERVAL '1 day'
+WHERE timestamp >= NOW() - INTERVAL '4 days' AND timestamp < NOW() - INTERVAL '1 day'
     ),
 
     top_10_urls_per_day AS (
